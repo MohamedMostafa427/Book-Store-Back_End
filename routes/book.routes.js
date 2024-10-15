@@ -5,7 +5,8 @@ const { getAllBooks,
      getWishlist,
      deleteFromWishlist,
      addToPurchasedList,
-     getPurchasedList }
+     getPurchasedList, 
+     getbookcat}
       = require("../controler/books.controler");
 
 const authenticate = require("../middlewares/authMiddleware");
@@ -15,6 +16,9 @@ const router = express.Router()
 router.route("/getAllBooks")
                 .get( authenticate, getAllBooks )
 
+router.route("/getBooksByCat/")
+                .get( authenticate, getbookcat )
+
 router.route("/getAllBooks/:bookId")
                 .get( authenticate , getBookById )
 
@@ -23,7 +27,11 @@ router.route("/Wishlist")
                 .get( authenticate , getWishlist )
                 .delete( authenticate , deleteFromWishlist )
 
-router.route( "/PurchasedList" )
+router.route( "/PurchasedList/" )
+                .post( authenticate , addToPurchasedList )
+                .get( authenticate , getPurchasedList )
+
+router.route( "/GetBooksByCat/" )
                 .post( authenticate , addToPurchasedList )
                 .get( authenticate , getPurchasedList )
                 

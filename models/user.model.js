@@ -21,8 +21,8 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 8,
     },
-    wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }], 
-    purchasedBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }] 
+    wishlist: [], 
+    purchasedBooks: [] 
 });
 
 module.exports = mongoose.model("User", userSchema);
